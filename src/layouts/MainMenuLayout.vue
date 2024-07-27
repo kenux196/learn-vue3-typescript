@@ -45,9 +45,9 @@ const linksList = [
     link: '/quasar',
   },
   {
-    title: 'Chart.js Test',
+    title: 'Chart Test',
     icon: 'bar_chart',
-    link: '/chart-js',
+    link: '/chart',
   },
   {
     title: 'Vue3 Test',
