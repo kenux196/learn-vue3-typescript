@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { User } from '../js/user';
 import { store } from '../stores/store.js';
 // const user = inject('user');

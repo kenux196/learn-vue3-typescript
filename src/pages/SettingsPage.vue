@@ -24,7 +24,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { $api } from '@/api/api';
 import { ref, onMounted } from 'vue';
 

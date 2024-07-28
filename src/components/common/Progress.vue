@@ -3,7 +3,7 @@
     <h1 aria-busy="true"></h1>
   </dialog>
 </template>
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 
 const isShow = ref(false);

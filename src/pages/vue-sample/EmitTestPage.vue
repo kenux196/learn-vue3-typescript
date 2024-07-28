@@ -9,7 +9,7 @@
   <EmitTestComponent @hello="say"></EmitTestComponent>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import EmitTestComponent from '@/components/EmitTestComponent.vue';
 import { runSomeAction } from '@/js/emit-test';
 import { provide, ref } from 'vue';

@@ -1,4 +1,4 @@
-import chartjsRoutes from './chartjs-routes';
+import chartjsRoutes from './chart-routes';
 import nestedRoutes from './nested-routes';
 import quasrRoutes from './quasar-routes';
 import vueRoutes from './vue-routes';

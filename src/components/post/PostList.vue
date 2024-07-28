@@ -5,7 +5,7 @@
       <th>title</th>
     </thead>
     <tbody>
-      <tr v-for="post in posts">
+      <tr v-for="post in posts" :key="post.id">
         <td>
           <a @click="showPostContent(post.id)">{{ post.id }}</a>
         </td>
@@ -19,7 +19,7 @@
   </table>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import axios from 'axios';
 import axiosGet from '../../js/HttpUtils';

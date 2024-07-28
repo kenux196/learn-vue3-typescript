@@ -56,11 +56,13 @@
     <div class="fit bg-primary text-white text-center">Size : fit -> 영역 전체를 가득 채운다.</div>
   </div>
   <div style="width: 200px; height: 100px; background-color: brown">
-    <div class="full-height bg-secondary text-white text-center">Size : full-heigt -> 높이를 가득 체운다.</div>
+    <div class="full-height bg-secondary text-white text-center">
+      Size : full-heigt -> 높이를 가득 체운다.
+    </div>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue';
 import useCounterStore from '@/stores/example-store';
 import { useQuasar } from 'quasar';

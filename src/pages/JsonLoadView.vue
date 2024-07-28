@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 // const jsonData = require('../json/test.json');
 // console.log(jsonData);
 // fetch('../json/test.json')
@@ -49,9 +49,7 @@ function deleteUser() {
     alert('삭제할 항목을 선택하세요.');
     return;
   }
-  userList.value = userList.value.filter(
-    (user) => !selectedList.value.includes(user)
-  );
+  userList.value = userList.value.filter((user) => !selectedList.value.includes(user));
   selectedList.value = [];
 }
 </script>
@@ -59,9 +57,7 @@ function deleteUser() {
   <h1>Json file load test</h1>
   <p>전체 리스트 길이: {{ userList.length }}</p>
   <div class="grid">
-    <button class="outline secondary" @click="sortJoinDate">
-      가입일별 정렬 {{ sortType }}
-    </button>
+    <button class="outline secondary" @click="sortJoinDate">가입일별 정렬 {{ sortType }}</button>
     <button @click="deleteUser">삭제</button>
     <div></div>
     <div></div>
@@ -69,11 +65,7 @@ function deleteUser() {
   <table>
     <tr>
       <th>
-        <input
-          type="checkbox"
-          v-model="allSelected"
-          :disabled="!sortedUserList.length"
-        />
+        <input type="checkbox" v-model="allSelected" :disabled="!sortedUserList.length" />
       </th>
       <th>ID</th>
       <th>NAME</th>

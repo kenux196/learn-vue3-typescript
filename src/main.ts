@@ -6,7 +6,7 @@ import { Quasar, SessionStorage, Notify } from 'quasar';
 import { VueQueryPlugin } from 'vue-query';
 
 import App from './App.vue';
-import router from './router/index-origin';
+import router from './router';
 
 import piniaPluginPersistedState from 'pinia-plugin-persistedstate';
 

@@ -8,7 +8,7 @@
   <button @click="onButtonClick">Add Todod</button>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { $api } from '@/api/api';
 import { useQueryClient, useQuery, useMutation } from 'vue-query';
 

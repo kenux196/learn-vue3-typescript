@@ -14,7 +14,7 @@
   <div class="q-pa-md">중첩 라우터 연습 페이지</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 
 const tab = ref('mails');

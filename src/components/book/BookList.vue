@@ -45,7 +45,12 @@
     <tbody>
       <tr v-for="book in state.books" :key="book.id">
         <td>
-          <input type="checkbox" v-model="state.selectedBook" :value="book.id" @change="selectedBookList()" />
+          <input
+            type="checkbox"
+            v-model="state.selectedBook"
+            :value="book.id"
+            @change="selectedBookList()"
+          />
         </td>
         <td>
           <a href="#">{{ book.id }}</a>
@@ -67,7 +72,7 @@
   <BookAddForm ref="bookAddForm" @added-book="updateBooks" />
   <Progress ref="progress" />
 </template>
-<script setup>
+<script setup lang="ts">
 import { ref, reactive, toRaw, nextTick } from 'vue';
 import { store } from '@/stores/store';
 import BookAddForm from './BookAddForm.vue';

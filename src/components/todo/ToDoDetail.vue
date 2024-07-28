@@ -5,7 +5,7 @@
   <pre v-else>{{ todoData }}</pre>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { $api } from '@/api/api';
 import { onMounted, ref, watch } from 'vue';
 

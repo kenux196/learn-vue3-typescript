@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import BookList from '@/components/book/BookList.vue';
 </script>
 

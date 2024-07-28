@@ -5,7 +5,7 @@
   <button @click="loginProcess">로그인</button>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { $api } from '@/api/api';
 import { ref } from 'vue';
 

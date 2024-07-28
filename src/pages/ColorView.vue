@@ -4,7 +4,7 @@
   <div class="blue-box"></div>
 </template>
 
-<script setup></script>
+<script setup lang="ts"></script>
 
 <style scoped>
 .red-box {
