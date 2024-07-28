@@ -10,8 +10,6 @@ import router from './router';
 
 import piniaPluginPersistedState from 'pinia-plugin-persistedstate';
 
-import messages from '@/i18n';
-
 // import icon libs
 import '@quasar/extras/material-icons/material-icons.css';
 // import quasar css
