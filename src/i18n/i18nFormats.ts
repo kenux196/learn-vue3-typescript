@@ -69,8 +69,8 @@ const numberFormats = {
   'en-US': {
     currency: {
       style: 'currency',
-      currency: 'USD',
       notation: 'standard',
+      currency: 'USD',
     },
     decimal: {
       style: 'decimal',
@@ -86,7 +86,6 @@ const numberFormats = {
     currency: {
       style: 'currency',
       currency: 'KRW',
-      useGrouping: true,
       currencyDisplay: 'symbol',
     },
     decimal: {

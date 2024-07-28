@@ -19,17 +19,93 @@ import '@quasar/extras/material-icons/material-icons.css';
 import 'quasar/src/css/index.sass';
 import { createI18n } from 'vue-i18n';
 import { datetimeFormats, numberFormats } from './i18n/i18nFormats';
+import enUS from '@/i18n/en-US/en.json';
+import koKR from '@/i18n/ko-KR/ko.json';
 
 const pinia = createPinia();
 pinia.use(piniaPluginPersistedState);
 
-const i18n = createI18n({
+// const i18n = createI18n({
+//   legacy: false,
+//   locale: 'ko-KR',
+//   globalInjection: true,
+//   fallbackLocale: 'ko-KR',
+//   messages: messages,
+//   datetimeFormats: datetimeFormats,
+//   numberFormats: numberFormats,
+// });
+
+type MessageSchema = typeof koKR;
+type NumberSchema = {
+  currency: {
+    style: 'currency';
+    currencyDisplay: 'symbole';
+    currency: string;
+  };
+  decimal: {
+    style: 'decimal';
+    minimumFractionDigits: number;
+    maximumFractionDigits: number;
+  };
+  percent: {
+    style: 'percent';
+    useGrouping: false;
+  };
+};
+type DateTimeSchema = {
+  short: {
+    short: {
+      year: 'numeric';
+      month: 'short';
+      day: 'numeric';
+    };
+    long: {
+      year: 'numeric';
+      month: 'short';
+      day: 'numeric';
+      weekday: 'short';
+      hour: 'numeric';
+      minute: 'numeric';
+      timeZoneName: 'short';
+      timezone: 'Asia/Tokyo';
+    };
+    long_h_12: {
+      year: 'numeric';
+      month: 'short';
+      day: 'numeric';
+      weekday: 'short';
+      hour: 'numeric';
+      minute: 'numeric';
+      hour12: true;
+      timeZoneName: 'short';
+      timezone: 'Asia/Tokyo';
+    };
+    long_h_24: {
+      year: 'numeric';
+      month: 'short';
+      day: 'numeric';
+      weekday: 'short';
+      hour: 'numeric';
+      minute: 'numeric';
+      hour12: false;
+      timeZoneName: 'short';
+      timezone: 'Asia/Tokyo';
+    };
+  };
+};
+const i18n = createI18n<
+  [message: MessageSchema, number: NumberSchema, datatime: DateTimeSchema],
+  'ko-KR' | 'en-US'
+>({
   legacy: false,
   locale: 'ko-KR',
   globalInjection: true,
   fallbackLocale: 'ko-KR',
-  messages: messages,
-  datetimeFormats: datetimeFormats,
+  messages: {
+    'ko-KR': koKR,
+    'en-US': enUS,
+  },
+  // datetimeFormats: datetimeFormats,
   numberFormats: numberFormats,
 });
 
