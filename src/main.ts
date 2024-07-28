@@ -10,12 +10,15 @@ import router from './router';
 
 import piniaPluginPersistedState from 'pinia-plugin-persistedstate';
 
+import messages from '@/i18n';
+
 // import icon libs
 import '@quasar/extras/material-icons/material-icons.css';
 // import quasar css
 // import 'quasar/dist/quasar.css';
 import 'quasar/src/css/index.sass';
 import { createI18n } from 'vue-i18n';
+import { datetimeFormats, numberFormats } from './i18n/i18nFormats';
 
 const pinia = createPinia();
 pinia.use(piniaPluginPersistedState);
@@ -25,6 +28,9 @@ const i18n = createI18n({
   locale: 'ko-KR',
   globalInjection: true,
   fallbackLocale: 'ko-KR',
+  messages: messages,
+  datetimeFormats: datetimeFormats,
+  numberFormats: numberFormats,
 });
 
 const app = createApp(App);
