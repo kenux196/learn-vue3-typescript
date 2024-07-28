@@ -1,4 +1,6 @@
-const datetimeFormats = {
+import type { I18nOptions } from 'vue-i18n';
+
+const datetimeFormats: I18nOptions['datetimeFormats'] = {
   'en-US': {
     short: {
       year: 'numeric',
@@ -65,7 +67,7 @@ const datetimeFormats = {
   },
 };
 
-const numberFormats = {
+const numberFormats: I18nOptions['numberFormats'] = {
   'en-US': {
     currency: {
       style: 'currency',
