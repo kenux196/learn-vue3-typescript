@@ -1,7 +1,7 @@
 import useAppStore from '@/stores/appStore';
-import axios from 'axios';
+import axios, { type AxiosInstance } from 'axios';
 
-const authAxios = axios.create();
+const authAxios: AxiosInstance = axios.create();
 
 authAxios.interceptors.request.use(
   (config) => {

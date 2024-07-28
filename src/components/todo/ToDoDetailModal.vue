@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, type Ref } from 'vue';
 
-const todoData = ref('');
+const todoData: Ref = ref('');
 const isOpen = ref(false);
 
 function close() {
   isOpen.value = false;
 }
 
-function open(data) {
+function open(data: Ref) {
   console.log('modal open');
   isOpen.value = true;
   todoData.value = data;

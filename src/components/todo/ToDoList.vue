@@ -29,23 +29,21 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, type Ref } from 'vue';
 import ToDoDetailModal from './ToDoDetailModal.vue';
 import { $api } from '@/api/api';
 
-const todoList = ref(null);
-const todoData = ref(null);
+const todoList: Ref = ref(null);
+const todoData: Ref = ref(null);
 
 async function fetchData() {
   todoList.value = null;
-  await $api.jsonplaceholder
-    .fetchTodos('https://jsonplaceholder.typicode.com/todos')
-    .then((res) => {
-      todoList.value = res.data;
-    });
+  await $api.jsonplaceholder.fetchTodos().then((res) => {
+    todoList.value = res.data;
+  });
 }
 
-async function getDetail(id) {
+async function getDetail(id: number) {
   await $api.jsonplaceholder.fetchTodoById(id).then((res) => {
     todoData.value = res.data;
   });
@@ -57,7 +55,7 @@ onMounted(() => {
 
 const todoDetailModal = ref('');
 
-async function openDetail(id) {
+async function openDetail(id: number) {
   console.log('open detail : ' + id);
   await getDetail(id);
   todoDetailModal.value.open(todoData.value);

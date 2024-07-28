@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios, { type AxiosInstance } from 'axios';
 
-const jsonplaceholderAxios = axios.create({
+const jsonplaceholderAxios: AxiosInstance = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com',
 });
 

@@ -1,7 +1,7 @@
-import authAxios from './axios/auth-axios';
-import withTokenAxios from './axios/with-token-axios';
-import commonAxios from './axios/common-axios';
-import jsonplaceholderAxios from './axios/jsonplaceholder-axios';
+import authAxios from '@/api/axios/auth-axios';
+import withTokenAxios from '@/api//axios/with-token-axios';
+import commonAxios from '@/api//axios/common-axios';
+import jsonplaceholderAxios from '@/api/axios/jsonplaceholder-axios';
 
 import boardApi from './board-api';
 import commentApi from './comment-api';
