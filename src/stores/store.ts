@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { computed, reactive, ref } from 'vue';
-import { bookMemoryRepository } from '../js/BookRepository.js';
+import { bookMemoryRepository } from '@/utils/BookRepository';
 
 export const store = reactive({
   player: null,
@@ -46,7 +46,7 @@ export const useCounterOptionApiStore = defineStore('counter2', {
     };
   },
   getters: {
-    doubleCount() {
+    doubleCount(): number {
       return this.count * 2;
     },
   },
@@ -69,7 +69,7 @@ export const useUserStore = defineStore('storeUser', {
     };
   },
   actions: {
-    setToken(value) {
+    setToken(value: string) {
       this.accessToken = value;
     },
   },

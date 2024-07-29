@@ -1,10 +1,13 @@
 export class User {
-  constructor(name, age) {
+  name: string;
+  age: number;
+
+  constructor(name: string, age: number) {
     this.name = name;
     this.age = age;
   }
 
-  changeName(name) {
+  changeName(name: string) {
     this.name = name;
   }
 

@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import EmitTestComponent from '@/components/EmitTestComponent.vue';
-import { runSomeAction } from '@/js/emit-test';
+import { runSomeAction } from '@/utils/emit-test';
 import { provide, ref } from 'vue';
 
 const message = ref('good');
@@ -19,7 +19,7 @@ const count = ref(0);
 const pMessage = ref('');
 const afterMessage = ref('');
 
-function say(msg) {
+function say(msg: string) {
   console.log(`recieved message: ${msg}`);
   message.value = msg;
 }
@@ -35,7 +35,7 @@ function runAction() {
 
 function afterRunner() {
   console.log('afterRunner');
-  afterMessage.value = new Date();
+  afterMessage.value = new Date().toISOString();
 }
 
 provide('parent-message', pMessage);

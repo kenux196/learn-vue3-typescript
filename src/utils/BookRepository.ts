@@ -1,31 +1,33 @@
-import { Book } from './book.js';
+import { Book } from './book';
 
 export class BookRepository {
+  books: Map<number, Book>;
+
   constructor() {
-    this.books = new Map();
+    this.books = new Map<number, Book>();
   }
 
   findAll() {
     return Array.from(this.books.values());
   }
 
-  findById(id) {
+  findById(id: number) {
     return this.books.get(id);
   }
 
-  save(book) {
-    if (book.id == undefined || book.id == '' || book.id == null) {
+  save(book: Book) {
+    if (book.id <= 0) {
       book.setId(this.generateId());
     }
     this.books.set(book.id, book);
   }
 
-  delete(id) {
+  delete(id: number) {
     this.books.delete(id);
   }
 
-  findByTitle(title) {
-    const books = [];
+  findByTitle(title: string) {
+    const books: Array<Book> = new Array();
     this.books.forEach((book) => {
       if (book.title.indexOf(title) > -1) {
         books.push(book);
@@ -41,7 +43,7 @@ export class BookRepository {
 
 export const bookMemoryRepository = new BookRepository();
 
-function initTestData(count) {
+function initTestData(count: number) {
   for (let index = 0; index < count; index++) {
     const id = index + 1;
     const title = 'book ' + id;
@@ -62,14 +64,14 @@ const displayTestData = () => {
 displayTestData();
 
 function testUpdateBook() {
-  const book = bookMemoryRepository.findById(1);
+  const book = getBook(1);
   book.title = 'newTitle';
   bookMemoryRepository.save(book);
 }
 testUpdateBook();
 
 function testDeletBook() {
-  const book = bookMemoryRepository.findById(2);
+  const book = getBook(2);
   bookMemoryRepository.delete(book.id);
 }
 testDeletBook();
@@ -80,3 +82,11 @@ function testFindByTitle() {
   books.forEach((book) => console.log(book));
 }
 testFindByTitle();
+
+function getBook(bookId: number) {
+  const foundBook = bookMemoryRepository.findById(bookId);
+  if (!foundBook) {
+    throw new Error(`Not found book: ${bookId}`);
+  }
+  return foundBook;
+}
