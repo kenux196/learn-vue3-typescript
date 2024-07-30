@@ -9,12 +9,12 @@
   <p>{{ $t('car', 2) }}</p>
   <p>{{ $t('apple', 0) }}</p>
   <p>{{ $t('apple', 1) }}</p>
-  <p>{{ $t('apple', 10, { count: 10 }) }}</p>
+  <p>{{ $t('apple', { count: 100 }) }}</p>
   <p>{{ $d(new Date(), 'short') }}</p>
   <p>{{ $d(new Date(), 'long') }}</p>
   <p>{{ $d(new Date(), 'long_h_12') }}</p>
   <p>{{ $d(new Date(), 'long_h_24') }}</p>
-  <p>{{ $d('2011-10-10T14:48:00', 'long_h_12') }}</p>
+  <p>{{ $d(new Date('2011-10-10T14:48:00'), 'long_h_12') }}</p>
   <p>{{ $n(10000, 'currency') }}</p>
   <p>{{ $n(10000, 'currency') }}</p>
   <p>{{ $n(10000, 'currency', { useGrouping: false }) }}</p>

@@ -14,6 +14,7 @@ export class Book {
   }
 
   static createBook(title: string, author: string, price: number, publishDate: string) {
+    console.log('🚀 ~ Book ~ createBook ~ publishDate:', publishDate);
     return new Book(title, author, price, publishDate);
   }
 

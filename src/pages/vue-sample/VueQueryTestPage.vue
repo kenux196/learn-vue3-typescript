@@ -1,11 +1,11 @@
 <template>
   <span v-if="isLoading">Loading...</span>
-  <span v-else-if="isError">Error: {{ error.message }}</span>
+  <span v-else-if="isError">Error: {{ error }}</span>
   <span v-else-if="isFetching">Refreshing...</span>
   <ul v-else>
     <li v-for="todo in data" :key="todo.id">{{ todo.title }}</li>
   </ul>
-  <button @click="onButtonClick">Add Todod</button>
+  <!-- <button @click="onButtonClick">Add Todod</button> -->
 </template>
 
 <script setup lang="ts">

@@ -1,10 +1,10 @@
-import { defineStore } from 'pinia';
+import { defineStore, type PiniaPluginContext } from 'pinia';
 import { computed, reactive, ref } from 'vue';
 import { bookMemoryRepository } from '@/utils/BookRepository';
 
 export const store = reactive({
   player: null,
-  setUser(user) {
+  setUser(user: any) {
     this.player = user;
   },
   bookRepository: bookMemoryRepository,
@@ -32,6 +32,14 @@ export const useCounterStore = defineStore('counter', () => {
     return {
       enable: true,
       strategies: [{ storage: localStorage }],
+      beforeRestore: (ctx: PiniaPluginContext) => {
+        // 복구전 호출되는 콜백
+        console.log(`about to restore '${ctx.store.$id}`);
+      },
+      afterRestore: (ctx: PiniaPluginContext) => {
+        // 복구 후 호출되는 콜백
+        console.log(`just restored '${ctx.store.$id}'`);
+      },
     };
   };
 
@@ -60,30 +68,40 @@ export const useCounterOptionApiStore = defineStore('counter2', {
   },
 });
 
-export const useUserStore = defineStore('storeUser', {
-  state: () => {
+export const useUserStore = defineStore('storeUser', () => {
+  const firstName = ref('firstName');
+  const lastName = ref('lastName');
+  const accessToken = ref('xxxxxxxxxxxxxxxxxxxxxxx');
+
+  function setName(fName: string, lName: string) {
+    firstName.value = fName;
+    lastName.value = lName;
+  }
+
+  function setToken(value: string) {
+    accessToken.value = value;
+  }
+
+  function $reset() {
+    firstName.value = '';
+    lastName.value = '';
+    accessToken.value = '';
+  }
+
+  const persist = () => {
     return {
-      firstName: 'S',
-      lastName: 'L',
-      accessToken: 'xxxxxxxxxxxxx',
+      enabled: true,
+      storage: localStorage, // default : localstorage
+      paths: ['accessToken', 'lastName'], // 특정값만 지정해서 저장.
+      beforeRestore: (ctx: PiniaPluginContext) => {
+        // 복구전 호출되는 콜백
+        console.log(`about to restore '${ctx.store.$id}`);
+      },
+      afterRestore: (ctx: PiniaPluginContext) => {
+        // 복구 후 호출되는 콜백
+        console.log(`just restored '${ctx.store.$id}'`);
+      },
     };
-  },
-  actions: {
-    setToken(value: string) {
-      this.accessToken = value;
-    },
-  },
-  persist: {
-    enabled: true,
-    storage: localStorage, // default : localstorage
-    paths: ['accessToken', 'lastName'], // 특정값만 지정해서 저장.
-    beforeRestore: (ctx) => {
-      // 복구전 호출되는 콜백
-      console.log(`about to restore '${ctx.store.$id}`);
-    },
-    afterRestore: (ctx) => {
-      // 복구 후 호출되는 콜백
-      console.log(`just restored '${ctx.store.$id}'`);
-    },
-  },
+  };
+  return { firstName, lastName, accessToken, setName, setToken, $reset, persist };
 });
