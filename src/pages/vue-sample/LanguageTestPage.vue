@@ -15,14 +15,14 @@
   <p>{{ d(new Date(), 'long_h_12') }}</p>
   <p>{{ d(new Date(), 'long_h_24') }}</p>
   <p>{{ d(new Date('2011-10-10T14:48:00'), 'long_h_12') }}</p>
-  <p>{{ n(10000, 'currency') }}</p>
-  <p>{{ n(10000, 'currency') }}</p>
-  <p>{{ n(10000, 'currency', { useGrouping: false }) }}</p>
-  <p>{{ n(987654321, 'currency', { notation: 'compact' }) }}</p>
-  <p>{{ n(0.99123, 'percent') }}</p>
-  <p>{{ n(0.99123, 'percent', { minimumFractionDigits: 2 }) }}</p>
-  <p>{{ n(12.11612345, 'decimal') }}</p>
-  <p>{{ n(12145281111, 'decimal') }}</p>
+  <p>{{ $n(10000, 'currency') }}</p>
+  <p>{{ $n(10000, 'currency') }}</p>
+  <p>{{ $n(10000, 'currency', { useGrouping: false }) }}</p>
+  <p>{{ $n(987654321, 'currency', { notation: 'compact' }) }}</p>
+  <p>{{ $n(0.99123, 'percent') }}</p>
+  <p>{{ $n(0.99123, 'percent', { minimumFractionDigits: 2 }) }}</p>
+  <p>{{ $n(12.11612345, 'decimal') }}</p>
+  <p>{{ $n(12145281111, 'decimal') }}</p>
   <h3>Day.js 테스트</h3>
   <p>현재 시간(UTC): {{ today }}</p>
   <p>한국어 12H Asia/Seoul: {{ displayDateTime('12h', today, 'ko', 'Asia/Seoul') }}</p>
@@ -37,7 +37,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-const { t, d, n } = useI18n();
+const { t, d } = useI18n();
 
 function greeting() {
   return t('hello', { name: 'kenux' });

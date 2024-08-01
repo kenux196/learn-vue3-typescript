@@ -82,6 +82,8 @@ const numberFormats: I18nOptions['numberFormats'] = {
     percent: {
       style: 'percent',
       useGrouping: false,
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
     },
   },
   'ko-KR': {
@@ -98,6 +100,8 @@ const numberFormats: I18nOptions['numberFormats'] = {
     percent: {
       style: 'percent',
       useGrouping: false,
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
     },
   },
 };
