@@ -8,6 +8,15 @@
     <button @click="counterStore.$reset">초기화</button>
     <p v-if="isOver10">{{ count }}가 10보다 커졌습니다.</p>
   </div>
+  <div class="grid">
+    <p>optionStore.state.name: {{ optionStore.name }}</p>
+    <input type="text" v-model="optionStore.name" />
+    <p>{{ optionStore.count }} * 2 = {{ optionStore.doubleCount }}</p>
+    <button @click="optionStore.increment">count 증가</button>
+    <button @click="optionStore.decrement">count 감소</button>
+    <button @click="optionStore.$reset">초기화</button>
+    <p v-if="isOver10">{{ count }}가 10보다 커졌습니다.</p>
+  </div>
   <div>
     <p>
       accessToken: {{ accessToken }} <br />
@@ -25,10 +34,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
-import { useCounterStore, useUserStore } from '../../stores/store';
+import { useCounterStore, useUserStore, useCounterOptionApiStore } from '../../stores/store';
 
 const counterStore = useCounterStore();
 const userStore = useUserStore();
+const optionStore = useCounterOptionApiStore();
 
 // 반응형을 유지하면서 스토어에서 속성 추출하기: storeToRefs() 사용
 // 스토어의 상태만 사용하고, 액션을 호출하지 않을 때 유용한 방법이다.
