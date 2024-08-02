@@ -9,23 +9,37 @@ permissions:
 
 jobs:
   build:
+    name: Test
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Node.js environment
-        uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
+      - uses: actions/checkout@v3
+
+      - name: Set Node.js 20.x
+        uses: actions/setup-node@v3
         with:
-          version: 8.x
-      - uses: actions/setup-node@v4
+          node-version: 20.x
+
+      - name: Run install
+        uses: Borales/actions-yarn@v5.0.0
         with:
-          node-version: '20'
-          cache: 'yarn'
-      - name: install
-        run: yarn install
-      - name: build
-        run: yarn build
-      - name: display dist files
-        run: ls -la && ls dist/
+          cmd: install # 'yarn install'
+        # env:
+        #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # if needed
+      - name: Build production bundle
+        uses: Borales/actions-yarn@v5.0.0
+        with:
+          cmd: build # 'yarn build'
+      - name: Test the app
+        uses: Borales/actions-yarn@v5.0.0
+        with:
+          cmd: test # will run `yarn test` command
+
+
+      # - name: Run test in sub-folder
+      #   uses: Borales/actions-yarn@v5.0.0
+      #   with:
+      #     cmd: test
+      #     dir: 'frontend' # will run `yarn test` in `frontend` sub folder
       # - name: Deploy to GitHub Pages
       #   uses: crazy-max/ghaction-github-pages@v4
       #   with:
