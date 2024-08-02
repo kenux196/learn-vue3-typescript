@@ -1,4 +1,4 @@
-name: 'demo-action'
+name: 'demo-build-action'
 on:
   workflow_dispatch:
   push:
