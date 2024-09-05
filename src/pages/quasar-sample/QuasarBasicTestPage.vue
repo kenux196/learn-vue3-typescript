@@ -68,7 +68,7 @@ import useCounterStore from '@/stores/example-store';
 import { useQuasar } from 'quasar';
 
 const $q = useQuasar();
-const lang = ref($q.lang.isoName);
+// const lang = ref($q.lang.isoName);
 console.log('platform type:', $q.platform);
 console.log('lang: ', $q.lang);
 

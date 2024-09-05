@@ -18,14 +18,6 @@ const routes = [
     path: '/gugudan',
     component: () => import('@/pages/GugudanPage.vue'),
   },
-  {
-    path: '/color',
-    component: () => import('@/pages/ColorView.vue'),
-  },
-  {
-    path: '/json-test',
-    component: () => import('@/pages/JsonLoadView.vue'),
-  },
   nestedRoutes,
   quasrRoutes,
   chartjsRoutes,

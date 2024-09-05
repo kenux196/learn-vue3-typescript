@@ -70,26 +70,27 @@
     <a>next</a>
   </div>
   <BookAddForm ref="bookAddForm" @added-book="updateBooks" />
-  <Progress ref="progress" />
+  <ProgressBar ref="progress" />
 </template>
 <script setup lang="ts">
-import { ref, reactive, toRaw, nextTick } from 'vue';
+import { ref, reactive, toRaw, nextTick, type Ref } from 'vue';
 import { store } from '@/stores/store';
 import BookAddForm from './BookAddForm.vue';
-import Progress from '../common/Progress.vue';
+import ProgressBar from '../common/ProgressBar.vue';
+import { Book } from '@/utils/book';
 
 const repository = store.bookRepository;
 const state = reactive({
   selectedAll: false,
-  books: null,
-  selectedBook: [],
+  books: new Array<Book>(),
+  selectedBook: new Array<number>(),
 });
 
 state.books = getBooks();
 
-const tableRef = ref();
-const selected = ref([]);
-let storedSelectedRow;
+const tableRef: Ref = ref();
+const selected: Ref = ref([]);
+let storedSelectedRow: Book;
 
 const columns = [
   {
@@ -97,8 +98,8 @@ const columns = [
     required: true,
     label: 'no.',
     align: 'left',
-    field: (row) => row.id,
-    format: (val) => `${val}`,
+    field: (row: Book) => row.id,
+    format: (val: string) => `${val}`,
     sortable: true,
   },
   { name: 'title', align: 'center', label: '제목', field: 'title', sortable: true },
@@ -109,6 +110,10 @@ const columns = [
 const rows = getBooks();
 
 function handleSelection({ rows, added, evt }) {
+  console.log('🚀 ~ handleSelection ~ rows:', rows);
+  console.log('🚀 ~ handleSelection ~ evt:', evt);
+  console.log('🚀 ~ handleSelection ~ added:', added);
+
   // ignore selection change from header of not from a direct click event
   if (rows.length !== 1 || evt === void 0) {
     return;
@@ -143,8 +148,10 @@ function handleSelection({ rows, added, evt }) {
 
       selected.value =
         added === true
-          ? selectedRows.concat(rangeRows.filter((row) => selectedRows.includes(row) === false))
-          : selectedRows.filter((row) => rangeRows.includes(row) === false);
+          ? selectedRows.concat(
+              rangeRows.filter((row: Book) => selectedRows.includes(row) === false)
+            )
+          : selectedRows.filter((row: Book) => rangeRows.includes(row) === false);
     } else if (ctrlKey !== true && added === true) {
       selected.value = [newSelectedRow];
     }
@@ -157,7 +164,7 @@ function selectAll() {
     state.selectedBook.splice(0, state.selectedBook.length);
   } else {
     state.selectedAll = true;
-    state.books.forEach((book) => {
+    state.books.forEach((book: Book) => {
       state.selectedBook.push(book.id);
     });
   }
@@ -188,13 +195,13 @@ function removeBooks() {
   updateBooks();
 }
 
-const bookAddForm = ref('');
+const bookAddForm: Ref = ref(null);
 function openBookForm() {
   console.log('Call parent openBookForm()');
   bookAddForm.value.openBookForm();
 }
 
-const progress = ref('');
+const progress: Ref = ref(null);
 function showProgressBar() {
   progress.value.show();
   setTimeout(() => {

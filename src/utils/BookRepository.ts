@@ -22,7 +22,7 @@ export class BookRepository {
     this.books.set(book.id, book);
   }
 
-  delete(id: number) {
+  delete(id: number): void {
     this.books.delete(id);
   }
 
