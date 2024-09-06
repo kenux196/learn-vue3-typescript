@@ -27,15 +27,17 @@
 <script setup lang="ts">
 import { $api } from '@/api/api';
 import { ref, onMounted } from 'vue';
+import type Post from '@/models/Post';
+import type Comment from '@/models/Comment';
 
 const region = ref('Asia/Pacific - KR');
 const regionOptions = ['Asia/Pacific - KR', 'Europe - EU', 'North America/ Latin America - US'];
 
-const country = ref('한국');
-const countryOptions = ['한국', '베트남', '태국', '필리핀', '인도네시아', '독일', '프랑스'];
+// const country = ref('한국');
+// const countryOptions = ['한국', '베트남', '태국', '필리핀', '인도네시아', '독일', '프랑스'];
 
-const posts = ref([]);
-const comments = ref([]);
+const posts = ref(new Array<Post>());
+const comments = ref(new Array<Comment>());
 
 function getPost() {
   $api.jsonplaceholder
@@ -55,6 +57,7 @@ function getComment() {
     .then((res) => {
       console.log('getComments() success', res.data);
       comments.value = res.data;
+      console.log('🚀 ~ .then ~ comments.value:', comments.value);
     })
     .catch((res) => {
       console.log('failed', res);
