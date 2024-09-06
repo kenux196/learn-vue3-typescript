@@ -75,7 +75,7 @@ const danNumberOptions = ref([2, 3, 4, 5, 6, 7, 8, 9]);
 const time = ref(limitTime.value);
 const quiz = ref('');
 const quizLabel = ref('문제내기');
-const answer = ref('');
+const answer = ref(0);
 const showAnswer = ref(false);
 const isRunning = ref(false);
 
@@ -98,7 +98,7 @@ function getQuiz() {
   answer.value = num1 * num2;
 }
 
-function getRandomInt(max) {
+function getRandomInt(max: number) {
   return Math.floor(Math.random() * max);
 }
 
@@ -124,7 +124,7 @@ function checkAnswer() {
   showAnswer.value = !showAnswer.value;
 }
 
-let intervalId;
+let intervalId: number;
 function startTimer() {
   intervalId = setInterval(() => {
     progress.value = --time.value / limitTime.value;
@@ -148,7 +148,7 @@ function reset() {
   time.value = limitTime.value;
   progress.value = 1;
   quiz.value = '';
-  answer.value = '';
+  answer.value = 0;
 }
 </script>
 
