@@ -29,35 +29,35 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, type Ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import ToDoDetailModal from './ToDoDetailModal.vue';
-import { $api } from '@/api/api';
+import JsonplaceHolderApiService from '@/api/JsonplaceHolderApiService';
+import type { TodoItem } from '@/models/TodoTypes';
 
-const todoList: Ref = ref(null);
-const todoData: Ref = ref(null);
+const todoDetailModal = ref<InstanceType<typeof ToDoDetailModal> | null>(null);
+const todoList = ref<TodoItem[]>();
 
 async function fetchData() {
-  todoList.value = null;
-  await $api.jsonplaceholder.fetchTodos().then((res) => {
+  try {
+    const res = await JsonplaceHolderApiService.fetchTodos();
     todoList.value = res.data;
-  });
+    console.log('🚀 ~ fetchData ~ res.data:', res.data);
+  } catch (e) {
+    console.error(e);
+  }
 }
 
-async function getDetail(id: number) {
-  await $api.jsonplaceholder.fetchTodoById(id).then((res) => {
-    todoData.value = res.data;
-  });
+async function openDetail(id: number) {
+  try {
+    console.log('open detail : ' + id);
+    const res = await JsonplaceHolderApiService.fetchTodoById(id);
+    todoDetailModal.value?.open(res.data);
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 onMounted(() => {
   fetchData();
 });
-
-const todoDetailModal = ref('');
-
-async function openDetail(id: number) {
-  console.log('open detail : ' + id);
-  await getDetail(id);
-  todoDetailModal.value.open(todoData.value);
-}
 </script>

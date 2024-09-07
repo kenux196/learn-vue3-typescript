@@ -6,16 +6,19 @@
 </template>
 
 <script setup lang="ts">
-import { $api } from '@/api/api';
+import JsonplaceHolderApiService from '@/api/JsonplaceHolderApiService';
 import { onMounted, ref, watch } from 'vue';
 
 const todoId = ref(1);
 const todoData = ref(null);
 
 async function fetchData() {
-  await $api.jsonplaceholder.fetchTodoById(todoId.value).then((res) => {
+  try {
+    const res = await JsonplaceHolderApiService.fetchTodoById(todoId.value);
     todoData.value = res.data;
-  });
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 onMounted(() => {
