@@ -25,11 +25,9 @@
 </template>
 
 <script setup lang="ts">
-import { $api } from '@/api/api';
 import { ref, onMounted } from 'vue';
-import type Post from '@/models/Post';
-import type Comment from '@/models/Comment';
 import JsonplaceHolderApiService from '@/api/JsonplaceHolderApiService';
+import type { Comment, Post } from '@/models/PostTypes';
 
 const region = ref('Asia/Pacific - KR');
 const regionOptions = ['Asia/Pacific - KR', 'Europe - EU', 'North America/ Latin America - US'];
@@ -48,29 +46,16 @@ async function getPost() {
   } catch (error) {
     console.error(error);
   }
-
-  // $api.jsonplaceholder
-  //   .fetchPosts()
-  //   .then((res) => {
-  //     console.log('getPosts() success', res.data);
-  //     posts.value = res.data;
-  //   })
-  //   .catch((res) => {
-  //     console.log('failed', res);
-  //   });
 }
 
-function getComment() {
-  $api.jsonplaceholder
-    .fetchComments()
-    .then((res) => {
-      console.log('getComments() success', res.data);
-      comments.value = res.data;
-      console.log('🚀 ~ .then ~ comments.value:', comments.value);
-    })
-    .catch((res) => {
-      console.log('failed', res);
-    });
+async function getComment() {
+  try {
+    const res = await JsonplaceHolderApiService.fetchComments();
+    comments.value = res.data;
+    console.log('🚀 ~ getComment ~ comments.value:', comments.value);
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 onMounted(() => {

@@ -6,14 +6,18 @@
 </template>
 
 <script setup lang="ts">
-import { $api } from '@/api/api';
+import AuthApiService from '@/api/AuthApiService';
 import { ref } from 'vue';
 
 const userId = ref('kenux');
 const userPassword = ref('password1004');
 
-function loginProcess() {
-  $api.auth.login(userId.value, userPassword.value);
+async function loginProcess() {
+  try {
+    await AuthApiService.login(userId.value, userPassword.value);
+  } catch (e) {
+    console.error(e);
+  }
 }
 </script>
 

@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { $api } from '@/api/api';
+import JsonplaceHolderApiService from '@/api/JsonplaceHolderApiService';
 import { useQuery } from 'vue-query';
 
 // Access QueryClient instance
@@ -36,14 +36,11 @@ const { isLoading, isError, data, error, isFetching } = useQuery(['todos'], getT
 // }
 
 async function getTodos() {
-  return await $api.jsonplaceholder
-    .fetchTodos()
-    .then((res) => {
-      return res.data;
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+  try {
+    return await JsonplaceHolderApiService.fetchTodos();
+  } catch (e) {
+    console.error(e);
+  }
 }
 </script>
 
