@@ -1,4 +1,4 @@
-import type { AxiosInstance } from 'axios';
+import type { AxiosInstance, AxiosRequestConfig } from 'axios';
 import koreanjsonAxios from './axios/koreanjson-axios';
 
 class KoreanJsonApiService {
@@ -21,10 +21,10 @@ class KoreanJsonApiService {
   }
 
   fetchPostsByUser(userId: number) {
-    const params = {
-      userId,
+    const config: AxiosRequestConfig = {
+      params: { userId },
     };
-    return this.instance.get('/posts', { params });
+    return this.instance.get('/posts', config);
   }
 }
 
