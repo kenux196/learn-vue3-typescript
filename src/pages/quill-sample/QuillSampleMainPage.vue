@@ -1,8 +1,8 @@
 <template>
   <h3>Quill: Rich Text Editor</h3>
   <!-- <QuillEditor theme="snow" /> -->
-  <div>
-    <div id="editor" style="width: 500px; height: 500px" ref="quillEditor">
+  <div style="width: 800px; height: 300px">
+    <div id="editor" ref="quillEditor">
       <p>Core build with no theme, formatting, non-essential modules</p>
     </div>
   </div>
@@ -17,13 +17,13 @@ const quillEditor = ref(null);
 const toolbarOptions = [
   ['bold', 'italic', 'underline', 'strike'], // toggled buttons
   ['blockquote', 'code-block'],
-  ['link', 'image', 'video', 'formula'],
+  ['link', 'image', 'video'],
 
-  [{ header: 1 }, { header: 2 }], // custom button values
+  [{ header: 1 }, { header: 2 }, { header: 3 }], // custom button values
   [{ list: 'ordered' }, { list: 'bullet' }, { list: 'check' }],
-  [{ script: 'sub' }, { script: 'super' }], // superscript/subscript
+  // [{ script: 'sub' }, { script: 'super' }], // superscript/subscript
   [{ indent: '-1' }, { indent: '+1' }], // outdent/indent
-  [{ direction: 'rtl' }], // text direction
+  // [{ direction: 'rtl' }], // text direction
 
   [{ size: ['small', false, 'large', 'huge'] }], // custom dropdown
   [{ header: [1, 2, 3, 4, 5, 6, false] }],
