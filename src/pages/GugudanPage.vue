@@ -151,5 +151,3 @@ function reset() {
   answer.value = 0;
 }
 </script>
-
-<style lang="scss" scoped></style>

@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.16.12",
-    "@vueup/vue-quill": "^1.2.0",
     "@vueuse/core": "^10.11.0",
     "axios": "^1.7.2",
     "builder-pattern": "^2.2.0",
@@ -25,6 +24,7 @@
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.1",
     "quasar": "^2.16.11",
+    "quill": "^2.0.2",
     "vue": "^3.4.29",
     "vue-echarts": "^7.0.0-beta.0",
     "vue-i18n": "^9.13.1",

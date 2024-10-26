@@ -1,6 +1,7 @@
 import chartjsRoutes from './chart-routes';
 import nestedRoutes from './nested-routes';
 import quasrRoutes from './quasar-routes';
+import quillRoutes from './quill-routes';
 import vueRoutes from './vue-routes';
 
 const routes = [
@@ -22,6 +23,7 @@ const routes = [
   quasrRoutes,
   chartjsRoutes,
   vueRoutes,
+  quillRoutes,
   // Always leave this as last one,
   // but you can also remove it
   {
