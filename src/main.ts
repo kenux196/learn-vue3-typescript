@@ -5,6 +5,9 @@ import { VueQueryPlugin } from 'vue-query';
 
 import App from './App.vue';
 import router from './router';
+// import { QuillEditor } from '@vueup/vue-quill';
+// import '@vueup/vue-quill/dist/vue-quill.snow.css';
+import 'quill/dist/quill.snow.css';
 
 import piniaPluginPersistedState from 'pinia-plugin-persistedstate';
 
@@ -46,5 +49,5 @@ app.use(Quasar, {
   plugins: { SessionStorage, Notify },
 });
 app.use(VueQueryPlugin);
-
+// app.component('QuillEditor', QuillEditor);
 app.mount('#app');
