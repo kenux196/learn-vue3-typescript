@@ -55,6 +55,11 @@ const linksList = [
     link: '/vue',
   },
   {
+    title: 'Quill Test',
+    icon: 'laptop',
+    link: '/quill',
+  },
+  {
     title: '구구단 테스트',
     icon: 'toys',
     link: '/gugudan',

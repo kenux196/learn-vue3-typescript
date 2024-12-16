@@ -59,5 +59,3 @@ function displayDateTime(type: string, date: string, locale: string, timezone: s
   return dayjs(date).tz(timezone).locale(locale).format('YYYY-MM-DD HH:mm');
 }
 </script>
-
-<style lang="scss" scoped></style>

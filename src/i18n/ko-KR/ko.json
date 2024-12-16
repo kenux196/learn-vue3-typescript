@@ -9,5 +9,5 @@
   "dio": "DIO:",
   "linked": "@:dio @:the_world !!!!",
   "car": "car | cars",
-  "apple": "no apples | one apple | {count} apples"
+  "apple": "사과 없음 | 사과 한 개 | 사과 {count}개"
 }

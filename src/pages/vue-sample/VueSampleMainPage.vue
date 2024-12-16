@@ -21,5 +21,3 @@ import { ref } from 'vue';
 
 const tab = ref('utils');
 </script>
-
-<style lang="scss" scoped></style>
