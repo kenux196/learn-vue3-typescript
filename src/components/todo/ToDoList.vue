@@ -2,22 +2,24 @@
   <div>
     <table>
       <thead>
-        <th>#</th>
-        <th>title</th>
-        <th>complete</th>
-        <th>userId</th>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Completed</th>
+          <th>User ID</th>
+        </tr>
       </thead>
       <tbody>
         <tr v-for="todoItem in todoList" :key="todoItem.id">
           <td>
-            <a href="#" @click="openDetail(todoItem.id)">{{ todoItem.id }}</a>
+            <a href="#" @click.prevent="openDetail(todoItem.id)">{{ todoItem.id }}</a>
           </td>
           <td>
-            <a href="#" @click="openDetail(todoItem.id)">
+            <a href="#" @click.prevent="openDetail(todoItem.id)">
               {{ todoItem.title }}
             </a>
           </td>
-          <td><input type="checkbox" :checked="todoItem.completed" /></td>
+          <td><input type="checkbox" v-model="todoItem.completed" disabled /></td>
           <td>{{ todoItem.userId }}</td>
         </tr>
       </tbody>
@@ -35,7 +37,7 @@ import JsonplaceHolderApiService from '@/api/JsonplaceHolderApiService';
 import type { TodoItem } from '@/models/TodoTypes';
 
 const todoDetailModal = ref<InstanceType<typeof ToDoDetailModal> | null>(null);
-const todoList = ref<TodoItem[]>();
+const todoList = ref<TodoItem[]>([]);
 
 async function fetchData() {
   try {
