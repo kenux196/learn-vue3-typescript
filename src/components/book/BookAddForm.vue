@@ -58,8 +58,8 @@ function addBook() {
     return;
   }
 
-  const newBook = new Book(state.title, state.author, parseFloat(state.price), state.date);
-  bookMemoryRepository.add(newBook);
+  const newBook = new Book(state.title, state.author, state.price, state.date);
+  bookMemoryRepository.save(newBook);
   emit('addedBook', newBook);
   close();
 }
