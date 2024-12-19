@@ -34,7 +34,7 @@ jobs:
       - name: Test the app
         uses: Borales/actions-yarn@v5.0.0
         with:
-          cmd: test:unit # will run `yarn test` command
+          cmd: test # will run `yarn test` command
 
 
       # - name: Run test in sub-folder
