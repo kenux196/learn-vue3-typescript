@@ -5,8 +5,6 @@
 </template>
 
 <script setup lang="ts">
-import MainMenuItem from './components/MainMenuItem.vue';
-
 const linksList = [
   {
     title: 'Home',
@@ -32,11 +30,6 @@ const linksList = [
     title: '중첩된 라우팅 연습',
     icon: 'auto_awesome_mosaic',
     link: '/nested-route',
-  },
-  {
-    title: 'Quasar Samples',
-    icon: 'memory',
-    link: '/quasar',
   },
   {
     title: 'Chart Test',
