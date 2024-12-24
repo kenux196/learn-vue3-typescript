@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>header area</div>
+    <div class="text-3xl font-bold underline">header area</div>
     <div>nav</div>
   </div>
 </template>

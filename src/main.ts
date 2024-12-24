@@ -2,10 +2,9 @@ import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import { VueQueryPlugin } from 'vue-query';
 
+import './style.css';
 import App from './App.vue';
 import router from './router';
-// import { QuillEditor } from '@vueup/vue-quill';
-// import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import 'quill/dist/quill.snow.css';
 
 import piniaPluginPersistedState from 'pinia-plugin-persistedstate';
@@ -40,5 +39,4 @@ app.use(pinia);
 app.use(router);
 app.use(i18n);
 app.use(VueQueryPlugin);
-// app.component('QuillEditor', QuillEditor);
 app.mount('#app');
