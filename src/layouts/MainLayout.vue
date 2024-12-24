@@ -1,12 +1,9 @@
 <template>
-  <q-layout view="hHh Lpr fFf">
-    <Header @toggle-menu="toggleMainMenuDrawer" />
-    <MainMenu v-model="menuOpen" show-if-above bordered />
-    <q-page-container>
-      <router-view />
-    </q-page-container>
-    <Footer />
-  </q-layout>
+  <Header />
+  <MainMenu />
+  <div>main content area</div>
+  <RouterView />
+  <Footer />
 </template>
 
 <script setup lang="ts">

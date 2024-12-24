@@ -1,13 +1,7 @@
 <template>
-  <q-drawer>
-    <q-list>
-      <q-item-label header class="text-weight-bolder text-h5">
-        <q-icon name="menu"></q-icon>
-        Menu
-      </q-item-label>
-      <MainMenuItem v-for="link in linksList" :key="link.title" v-bind="link" />
-    </q-list>
-  </q-drawer>
+  <div v-for="link in linksList" :key="link.title">
+    <a :href="link.link">{{ link.title }}</a>
+  </div>
 </template>
 
 <script setup lang="ts">
