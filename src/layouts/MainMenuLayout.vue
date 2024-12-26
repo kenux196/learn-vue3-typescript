@@ -5,7 +5,10 @@
     class="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box"
   >
     <li>
-      <a :href="link.link">{{ link.title }}</a>
+      <a :href="link.link"
+        ><span class="material-symbols-outlined">{{ link.icon }}</span
+        >{{ link.title }}</a
+      >
     </li>
   </ul>
 </template>
