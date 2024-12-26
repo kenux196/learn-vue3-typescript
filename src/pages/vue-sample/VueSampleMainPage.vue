@@ -1,5 +1,6 @@
 <template>
   <div role="tablist" class="tabs tabs-bordered mb-10">
+    <a role="tab" class="tab" href="/vue/emit">Emit</a>
     <a role="tab" class="tab" href="/vue/todo-list1">Todo List 1</a>
     <a role="tab" class="tab" href="/vue/todo-list2">Todo List 2</a>
     <a role="tab" class="tab" href="/vue/store">Store</a>
