@@ -14,6 +14,7 @@
 </template>
 
 <script setup lang="ts">
+// TO-DO: 아래의 링크 리스트를 pinia store에서 관리하도록 변경
 const linksList = [
   {
     title: 'Home',
