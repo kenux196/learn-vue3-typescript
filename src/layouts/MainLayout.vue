@@ -1,8 +1,9 @@
 <template>
   <Header />
   <MainMenu />
-  <div>main content area</div>
-  <RouterView />
+  <div class="my-10">
+    <RouterView />
+  </div>
   <Footer />
 </template>
 

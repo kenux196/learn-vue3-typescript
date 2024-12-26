@@ -1,7 +1,13 @@
 <template>
-  <div v-for="link in linksList" :key="link.title">
-    <a :href="link.link">{{ link.title }}</a>
-  </div>
+  <ul
+    v-for="link in linksList"
+    :key="link.title"
+    class="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box"
+  >
+    <li>
+      <a :href="link.link">{{ link.title }}</a>
+    </li>
+  </ul>
 </template>
 
 <script setup lang="ts">

@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <div class="text-3xl font-bold underline">header area</div>
-    <div>nav</div>
-  </div>
+  <div class="text-3xl font-bold my-10">KENUX Play Ground</div>
 </template>
 
 <script setup lang="ts">

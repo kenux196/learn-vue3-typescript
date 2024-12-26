@@ -1,5 +1,7 @@
 <template>
-  <MainLayout />
+  <div class="mx-10">
+    <MainLayout />
+  </div>
 </template>
 
 <script setup lang="ts">
