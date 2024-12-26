@@ -1,10 +1,10 @@
 <template>
-  <div class="col-5">{{ currentDateTime }}</div>
-  <div class="col text-center">
-    Released under <span class="text-weight-bold">MIT License</span>.
-    <div>Copyright @ 2024 kenux.yun</div>
-  </div>
-  <div class="col">
+  <div class="grid gap-4 grid-cols-3">
+    <div>{{ currentDateTime }}</div>
+    <div>
+      Released under <span class="font-bold">MIT License</span>.
+      <div>Copyright @ 2024 kenux.yun</div>
+    </div>
     <LanguageSwitcher />
   </div>
 </template>

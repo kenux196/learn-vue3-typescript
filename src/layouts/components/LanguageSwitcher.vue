@@ -1,5 +1,9 @@
 <template>
-  <div>언어 선택기</div>
+  <select v-model="locale" class="select select-bordered select-sm w-full max-w-xs">
+    <option v-for="option in localeOptions" :key="option.value" :value="option.value">
+      {{ option.label }}
+    </option>
+  </select>
 </template>
 
 <script setup lang="ts">
