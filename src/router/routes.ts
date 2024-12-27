@@ -1,6 +1,5 @@
 import chartjsRoutes from './chart-routes';
 import nestedRoutes from './nested-routes';
-import quasrRoutes from './quasar-routes';
 import quillRoutes from './quill-routes';
 import vueRoutes from './vue-routes';
 
@@ -20,7 +19,6 @@ const routes = [
     component: () => import('@/pages/GugudanPage.vue'),
   },
   nestedRoutes,
-  quasrRoutes,
   chartjsRoutes,
   vueRoutes,
   quillRoutes,

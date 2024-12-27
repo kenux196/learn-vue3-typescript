@@ -1,24 +1,12 @@
 <template>
-  <q-select
-    v-model="locale"
-    :options="localeOptions"
-    dark
-    dense
-    borderless
-    emit-value
-    map-options
-    options-dense
-    options-dark
-    style="max-width: 150px; margin: auto"
-  >
-    <template v-slot:before>
-      <q-icon name="language" />
-    </template>
-  </q-select>
+  <select v-model="locale" class="select select-bordered select-sm w-full max-w-xs">
+    <option v-for="option in localeOptions" :key="option.value" :value="option.value">
+      {{ option.label }}
+    </option>
+  </select>
 </template>
 
 <script setup lang="ts">
-console.log('This.sislslkdsjflaksdj');
 import { useI18n } from 'vue-i18n';
 // const { locale } = useI18n({
 //   useScope: 'global',
@@ -36,5 +24,3 @@ const localeOptions = [
   },
 ];
 </script>
-
-<style lang="scss" scoped></style>

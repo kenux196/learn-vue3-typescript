@@ -1,15 +1,12 @@
 <template>
-  <q-footer elevated class="bg-grey-8 text-white row q-py-sm">
-    <div class="col-5 q-ml-sm">{{ currentDateTime }}</div>
-    <div class="col text-center">
-      Released under <span class="text-weight-bold">MIT License</span>.
+  <div class="grid gap-4 grid-cols-3">
+    <div>{{ currentDateTime }}</div>
+    <div>
+      Released under <span class="font-bold">MIT License</span>.
       <div>Copyright @ 2024 kenux.yun</div>
     </div>
-    <div class="col">
-      <LanguageSwitcher />
-    </div>
-    <div class="col-1 q-mr-sm">Quasar v{{ $q.version }}</div>
-  </q-footer>
+    <LanguageSwitcher />
+  </div>
 </template>
 
 <script setup lang="ts">

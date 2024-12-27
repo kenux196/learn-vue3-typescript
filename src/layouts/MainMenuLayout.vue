@@ -1,18 +1,20 @@
 <template>
-  <q-drawer>
-    <q-list>
-      <q-item-label header class="text-weight-bolder text-h5">
-        <q-icon name="menu"></q-icon>
-        Menu
-      </q-item-label>
-      <MainMenuItem v-for="link in linksList" :key="link.title" v-bind="link" />
-    </q-list>
-  </q-drawer>
+  <ul
+    v-for="link in linksList"
+    :key="link.title"
+    class="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box"
+  >
+    <li>
+      <a :href="link.link"
+        ><span class="material-symbols-outlined">{{ link.icon }}</span
+        >{{ link.title }}</a
+      >
+    </li>
+  </ul>
 </template>
 
 <script setup lang="ts">
-import MainMenuItem from './components/MainMenuItem.vue';
-
+// TO-DO: 아래의 링크 리스트를 pinia store에서 관리하도록 변경
 const linksList = [
   {
     title: 'Home',
@@ -38,11 +40,6 @@ const linksList = [
     title: '중첩된 라우팅 연습',
     icon: 'auto_awesome_mosaic',
     link: '/nested-route',
-  },
-  {
-    title: 'Quasar Samples',
-    icon: 'memory',
-    link: '/quasar',
   },
   {
     title: 'Chart Test',

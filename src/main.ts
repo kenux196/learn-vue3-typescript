@@ -1,21 +1,14 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
-import { Quasar, SessionStorage, Notify } from 'quasar';
 import { VueQueryPlugin } from 'vue-query';
 
+import './style.css';
 import App from './App.vue';
 import router from './router';
-// import { QuillEditor } from '@vueup/vue-quill';
-// import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import 'quill/dist/quill.snow.css';
 
 import piniaPluginPersistedState from 'pinia-plugin-persistedstate';
 
-// import icon libs
-import '@quasar/extras/material-icons/material-icons.css';
-// import quasar css
-import 'quasar/dist/quasar.css';
-// import 'quasar/src/css/index.sass';
 import { createI18n } from 'vue-i18n';
 import { datetimeFormats, numberFormats } from './i18n/i18nFormats';
 import enUS from '@/i18n/en-US/en.json';
@@ -45,9 +38,5 @@ app.config.errorHandler = (err: any) => {
 app.use(pinia);
 app.use(router);
 app.use(i18n);
-app.use(Quasar, {
-  plugins: { SessionStorage, Notify },
-});
 app.use(VueQueryPlugin);
-// app.component('QuillEditor', QuillEditor);
 app.mount('#app');
