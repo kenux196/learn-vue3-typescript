@@ -1,13 +1,13 @@
 <template>
   <ul
-    v-for="link in linksList"
-    :key="link.title"
+    v-for="menu in mainMenuList"
+    :key="menu.title"
     class="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box"
   >
     <li>
-      <a :href="link.link"
-        ><span class="material-symbols-outlined">{{ link.icon }}</span
-        >{{ link.title }}</a
+      <a :href="menu.path"
+        ><span class="material-symbols-outlined">{{ menu.icon }}</span
+        >{{ menu.title }}</a
       >
     </li>
   </ul>
@@ -15,51 +15,56 @@
 
 <script setup lang="ts">
 // TO-DO: 아래의 링크 리스트를 pinia store에서 관리하도록 변경
-const linksList = [
+const mainMenuList = [
   {
     title: 'Home',
     icon: 'home',
-    link: '/',
+    path: '/',
   },
   {
     title: 'Dashboard',
     icon: 'dashboard',
-    link: '/dashboard',
+    path: '/dashboard',
   },
   {
     title: 'Posts',
     icon: 'article',
-    link: '/posts',
+    path: '/posts',
   },
   {
     title: 'Settings',
     icon: 'settings',
-    link: '/settings',
+    path: '/settings',
   },
   {
     title: '중첩된 라우팅 연습',
     icon: 'auto_awesome_mosaic',
-    link: '/nested-route',
+    path: '/nested-route',
   },
   {
     title: 'Chart Test',
     icon: 'bar_chart',
-    link: '/chart',
+    path: '/chart',
   },
   {
     title: 'Vue3 Test',
     icon: 'laptop',
-    link: '/vue',
+    path: '/vue',
   },
   {
     title: 'Quill Test',
     icon: 'laptop',
-    link: '/quill',
+    path: '/quill',
   },
   {
     title: '구구단 테스트',
     icon: 'toys',
-    link: '/gugudan',
+    path: '/gugudan',
+  },
+  {
+    title: 'tainwindcss 테스트',
+    icon: 'responsive_layout',
+    path: '/css',
   },
 ];
 </script>

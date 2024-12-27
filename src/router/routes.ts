@@ -22,6 +22,10 @@ const routes = [
   chartjsRoutes,
   vueRoutes,
   quillRoutes,
+  {
+    path: '/css',
+    component: () => import('@/pages/TailwindcssPlayground.vue'),
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
