@@ -1,5 +1,5 @@
 <template>
-  <div class="m-10">
+  <div class="container mx-auto">
     <MainLayout />
   </div>
 </template>
