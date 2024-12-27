@@ -1,16 +1,18 @@
 <template>
-  <ul
-    v-for="menu in mainMenuList"
-    :key="menu.title"
-    class="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box"
-  >
-    <li>
-      <a :href="menu.path"
-        ><span class="material-symbols-outlined">{{ menu.icon }}</span
-        >{{ menu.title }}</a
-      >
-    </li>
-  </ul>
+  <div class="bg-base-200">
+    <ul
+      v-for="menu in mainMenuList"
+      :key="menu.title"
+      class="menu menu-vertical lg:menu-horizontal rounded-box"
+    >
+      <li>
+        <a :href="menu.path"
+          ><span class="material-symbols-outlined">{{ menu.icon }}</span
+          >{{ menu.title }}</a
+        >
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script setup lang="ts">
