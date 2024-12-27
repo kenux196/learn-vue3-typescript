@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-between items-center p-5 bg-gray-100">
+  <div class="flex justify-between items-center p-5 bg-base-200">
     <div class="text-3xl font-bold my-10">KENUX Play Ground</div>
     <label class="flex cursor-pointer gap-2">
       <svg
@@ -42,22 +42,19 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { useDark, useToggle } from '@vueuse/core';
-import { themeChange } from 'theme-change';
+import { onMounted } from 'vue';
+import { useDark } from '@vueuse/core';
 
-const darkMode = ref(false);
 const isDark = useDark();
-const toggleDark = useToggle(isDark);
 
 onMounted(() => {
-  darkMode.value = new Date().getHours() >= 18;
   toggleDarkMode();
-  themeChange(true);
 });
 
 function toggleDarkMode() {
-  console.log('toggleDarkMode');
-  themeChange(false);
+  const htmlElement = document.querySelector('html');
+  if (htmlElement) {
+    htmlElement.setAttribute('data-theme', isDark.value ? 'dark' : 'light');
+  }
 }
 </script>
