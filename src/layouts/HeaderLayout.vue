@@ -22,7 +22,7 @@
         type="checkbox"
         v-model="isDark"
         class="toggle theme-controller"
-        @change="toggleDarkMode"
+        onchange="toggleDark()"
       />
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -43,12 +43,11 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { useDark } from '@vueuse/core';
+import { useDark, useToggle } from '@vueuse/core';
 
 const darkMode = ref(false);
-const isDark = useDark({
-  selector: 'html',
-});
+const isDark = useDark();
+const toggleDark = useToggle(isDark);
 
 onMounted(() => {
   darkMode.value = new Date().getHours() >= 18;
