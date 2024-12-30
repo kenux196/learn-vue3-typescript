@@ -68,5 +68,10 @@ const mainMenuList = [
     icon: 'responsive_layout',
     path: '/css',
   },
+  {
+    title: 'Cowork chatGPT',
+    icon: 'chat',
+    path: '/chatgpt',
+  },
 ];
 </script>

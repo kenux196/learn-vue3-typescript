@@ -26,6 +26,10 @@ const routes = [
     path: '/css',
     component: () => import('@/pages/TailwindcssPlayground.vue'),
   },
+  {
+    path: '/chatgpt',
+    component: () => import('@/pages/chatgptPage.vue'),
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
