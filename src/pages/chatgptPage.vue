@@ -7,26 +7,38 @@
       <input v-model="newTaskTime" type="time" class="border p-2 mr-2" />
       <button @click="addTask" class="bg-blue-500 text-white p-2 rounded">추가</button>
     </div>
-    <h2 class="text-xl font-semibold mb-2">할일</h2>
-    <ul>
-      <li v-for="task in incompleteTasks" :key="task.id" class="flex items-center mb-2">
-        <span :class="{ 'line-through': task.completed }"
-          >{{ task.name }} ({{ task.date }} {{ task.time || '' }})</span
-        >
-        <button @click="completeTask(task)" class="bg-green-500 text-white p-2 ml-2 rounded">
-          {{ task.completed ? '취소' : '완료' }}
-        </button>
-      </li>
-    </ul>
-    <h2 class="text-xl font-semibold mt-4 mb-2">완료된 항목</h2>
-    <ul>
-      <li v-for="task in completedTasks" :key="task.id" class="mb-2">
-        <span>{{ task.name }} ({{ task.date }} {{ task.time || '' }})</span>
-        <button @click="completeTask(task)" class="bg-red-500 text-white p-2 ml-2 rounded">
-          취소
-        </button>
-      </li>
-    </ul>
+    <div class="flex gap-5">
+      <div class="w-1/2 pr-2 bg-gray-100 p-4 rounded">
+        <h2 class="text-xl font-semibold mb-2">할 일</h2>
+        <ul>
+          <li v-for="task in incompleteTasks" :key="task.id" class="flex items-center mb-2">
+            <button @click="completeTask(task)" class="bg-green-500 text-white p-2 mr-2 rounded">
+              {{ task.completed ? '취소' : '완료' }}
+            </button>
+            <button @click="deleteTask(task.id)" class="bg-red-500 text-white p-2 mr-2 rounded">
+              삭제
+            </button>
+            <span :class="{ 'line-through': task.completed }">
+              {{ task.name }} ({{ task.date }} {{ task.time || '' }})
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div class="w-1/2 pl-2 bg-green-200 p-4 rounded">
+        <h2 class="text-xl font-semibold mb-2">완료한 일</h2>
+        <ul>
+          <li v-for="task in completedTasks" :key="task.id" class="flex items-center mb-2">
+            <button @click="completeTask(task)" class="bg-red-500 text-white p-2 mr-2 rounded">
+              취소
+            </button>
+            <button @click="deleteTask(task.id)" class="bg-red-500 text-white p-2 mr-2 rounded">
+              삭제
+            </button>
+            <span> {{ task.name }} ({{ task.date }} {{ task.time || '' }}) </span>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -41,7 +53,18 @@ interface Task {
   completed: boolean;
 }
 
-const tasks = ref<Task[]>([]);
+const tasks = ref<Task[]>([
+  { id: 1, name: '할일 1', date: '2023-10-01', time: '10:00', completed: false },
+  { id: 2, name: '할일 2', date: '2023-10-02', time: '11:00', completed: false },
+  { id: 3, name: '할일 3', date: '2023-10-03', time: '12:00', completed: false },
+  { id: 4, name: '할일 4', date: '2023-10-04', time: '13:00', completed: false },
+  { id: 5, name: '할일 5', date: '2023-10-05', time: '14:00', completed: false },
+  { id: 6, name: '완료한 일 1', date: '2023-09-01', time: '10:00', completed: true },
+  { id: 7, name: '완료한 일 2', date: '2023-09-02', time: '11:00', completed: true },
+  { id: 8, name: '완료한 일 3', date: '2023-09-03', time: '12:00', completed: true },
+  { id: 9, name: '완료한 일 4', date: '2023-09-04', time: '13:00', completed: true },
+  { id: 10, name: '완료한 일 5', date: '2023-09-05', time: '14:00', completed: true },
+]);
 const newTask = ref('');
 const newTaskDate = ref('');
 const newTaskTime = ref('');
@@ -67,6 +90,10 @@ const completeTask = (task: Task) => {
 
 const incompleteTasks = computed(() => tasks.value.filter((task) => !task.completed));
 const completedTasks = computed(() => tasks.value.filter((task) => task.completed));
+
+const deleteTask = (id: number) => {
+  tasks.value = tasks.value.filter((task) => task.id !== id);
+};
 </script>
 
 <style scoped>
