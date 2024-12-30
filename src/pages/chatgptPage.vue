@@ -12,15 +12,18 @@
         <h2 class="text-xl font-semibold mb-2">할 일</h2>
         <ul>
           <li v-for="task in incompleteTasks" :key="task.id" class="flex items-center mb-2">
-            <button @click="completeTask(task)" class="bg-green-500 text-white p-2 mr-2 rounded">
-              {{ task.completed ? '취소' : '완료' }}
-            </button>
-            <button @click="deleteTask(task.id)" class="bg-red-500 text-white p-2 mr-2 rounded">
-              삭제
-            </button>
+            <input
+              type="checkbox"
+              @change="completeTask(task)"
+              :checked="task.completed"
+              class="mr-2 transform scale-150"
+            />
             <span :class="{ 'line-through': task.completed }">
               {{ task.name }} ({{ task.date }} {{ task.time || '' }})
             </span>
+            <button @click="deleteTask(task.id)" class="bg-blue-500 text-white p-1 ml-2 rounded">
+              삭제
+            </button>
           </li>
         </ul>
       </div>
@@ -28,13 +31,16 @@
         <h2 class="text-xl font-semibold mb-2">완료한 일</h2>
         <ul>
           <li v-for="task in completedTasks" :key="task.id" class="flex items-center mb-2">
-            <button @click="completeTask(task)" class="bg-red-500 text-white p-2 mr-2 rounded">
-              취소
-            </button>
-            <button @click="deleteTask(task.id)" class="bg-red-500 text-white p-2 mr-2 rounded">
+            <input
+              type="checkbox"
+              @change="completeTask(task)"
+              :checked="task.completed"
+              class="mr-2 transform scale-150"
+            />
+            <span> {{ task.name }} ({{ task.date }} {{ task.time || '' }}) </span>
+            <button @click="deleteTask(task.id)" class="bg-blue-500 text-white p-1 ml-2 rounded">
               삭제
             </button>
-            <span> {{ task.name }} ({{ task.date }} {{ task.time || '' }}) </span>
           </li>
         </ul>
       </div>
