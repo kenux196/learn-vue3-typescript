@@ -8,36 +8,48 @@
       <button @click="addTask" class="bg-blue-500 text-white p-2 rounded">추가</button>
     </div>
     <div class="flex gap-5">
-      <div class="w-1/2 pr-2 bg-gray-100 p-4 rounded">
+      <div class="w-1/2 pr-2 bg-base-100 p-4 rounded">
         <h2 class="text-xl font-semibold mb-2">할 일</h2>
         <ul>
-          <li v-for="task in incompleteTasks" :key="task.id" class="flex items-center mb-2">
-            <input
-              type="checkbox"
-              @change="completeTask(task)"
-              :checked="task.completed"
-              class="mr-2 transform scale-150"
-            />
-            <span :class="{ 'line-through': task.completed }">
-              {{ task.name }} ({{ task.date }} {{ task.time || '' }})
-            </span>
+          <li
+            v-for="task in incompleteTasks"
+            :key="task.id"
+            class="flex items-center justify-between mb-2 border-b pb-2"
+          >
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                @change="completeTask(task)"
+                :checked="task.completed"
+                class="mr-2 transform scale-150"
+              />
+              <span :class="{ 'line-through': task.completed }">
+                {{ task.name }} ({{ task.date }} {{ task.time || '' }})
+              </span>
+            </div>
             <button @click="deleteTask(task.id)" class="bg-blue-500 text-white p-1 ml-2 rounded">
               삭제
             </button>
           </li>
         </ul>
       </div>
-      <div class="w-1/2 pl-2 bg-green-200 p-4 rounded">
+      <div class="w-1/2 pl-2 bg-base-100 p-4 rounded">
         <h2 class="text-xl font-semibold mb-2">완료한 일</h2>
         <ul>
-          <li v-for="task in completedTasks" :key="task.id" class="flex items-center mb-2">
-            <input
-              type="checkbox"
-              @change="completeTask(task)"
-              :checked="task.completed"
-              class="mr-2 transform scale-150"
-            />
-            <span> {{ task.name }} ({{ task.date }} {{ task.time || '' }}) </span>
+          <li
+            v-for="task in completedTasks"
+            :key="task.id"
+            class="flex items-center justify-between mb-2 border-b pb-2"
+          >
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                @change="completeTask(task)"
+                :checked="task.completed"
+                class="mr-2 transform scale-150"
+              />
+              <span> {{ task.name }} ({{ task.date }} {{ task.time || '' }}) </span>
+            </div>
             <button @click="deleteTask(task.id)" class="bg-blue-500 text-white p-1 ml-2 rounded">
               삭제
             </button>
