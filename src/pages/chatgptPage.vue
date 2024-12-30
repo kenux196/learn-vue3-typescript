@@ -5,7 +5,7 @@
       <input v-model="newTask" type="text" placeholder="할일 추가" class="border p-2 mr-2" />
       <input v-model="newTaskDate" type="date" class="border p-2 mr-2" />
       <input v-model="newTaskTime" type="time" class="border p-2 mr-2" />
-      <button @click="addTask" class="bg-blue-500 text-white p-2 rounded">추가</button>
+      <button @click="addTask" class="bg-blue-500 text-white p-2 w-24 rounded">추가</button>
     </div>
     <div class="flex gap-5">
       <div class="w-1/2 pr-2 bg-base-100 p-4 rounded">
