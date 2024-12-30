@@ -1,11 +1,28 @@
 <template>
   <p class="text-3xl font-bold">Tailwindcss Playground</p>
   <div>
-    <p class="text-2xl font-bold">columns</p>
-    <div class="colmuns-3 flex gap-5">
-      <div class="bg-gray-200 p-4 w-10">1</div>
-      <div class="bg-gray-300 p-4 w-20">2</div>
-      <div class="bg-gray-400 p-4 w-32">3</div>
+    <p class="text-2xl font-bold">flex: basis</p>
+    <div class="flex flex-row gap-5 bg-green-200 h-40 items-center">
+      <div
+        class="basis-1/5 bg-orange-400 h-20 font-bold text-white rounded-full content-center text-center"
+      >
+        1/5
+      </div>
+      <div
+        class="basis-1/4 bg-orange-500 h-20 font-bold text-white rounded-lg content-center text-center"
+      >
+        1/4
+      </div>
+      <div
+        class="basis-1/3 bg-orange-600 h-20 font-bold text-white rounded-2xl content-center text-center"
+      >
+        1/3
+      </div>
+      <div
+        class="basis-1/2 bg-orange-700 h-20 font-bold text-white rounded-3xl content-center text-center"
+      >
+        1/2
+      </div>
     </div>
   </div>
   <p class="text-2xl font-bold my-3">flex</p>
