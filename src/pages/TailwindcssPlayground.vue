@@ -28,7 +28,7 @@
   <p class="text-2xl font-bold my-3">flex</p>
   <div class="flex flex-wrap gap-10">
     <div
-      class="flex items-center bg-slate-900 w-64 h-20 gap-5 rounded-full"
+      class="flex items-center bg-slate-600 w-64 h-20 gap-5 rounded-full"
       v-for="i in 10"
       :key="i"
     >
