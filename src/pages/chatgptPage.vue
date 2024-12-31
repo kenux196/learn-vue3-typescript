@@ -63,16 +63,10 @@
                 :checked="task.completed"
                 class="mr-5 transform scale-150"
               />
-              <span :class="{ 'text-red-500': new Date(task.date + 'T' + task.time) < new Date() }">
-                {{ task.name }}
-              </span>
+              <span>{{ task.name }}</span>
             </div>
             <div class="flex items-center">
-              <span
-                :class="{ 'text-red-500': new Date(task.date + 'T' + task.time) < new Date() }"
-                class="mr-2"
-                >{{ task.date }} {{ task.time || '' }}</span
-              >
+              <span class="mr-2">{{ task.date }} {{ task.time || '' }}</span>
               <button
                 @click="deleteTask(task.id)"
                 class="bg-blue-500 text-white p-1 ml-2 w-24 rounded"
@@ -99,16 +93,16 @@ interface Task {
 }
 
 const tasks = ref<Task[]>([
-  { id: 1, name: '할일 1', date: '2023-10-01', time: '10:00', completed: false },
-  { id: 2, name: '할일 2', date: '2023-10-02', time: '11:00', completed: false },
-  { id: 3, name: '할일 3', date: '2023-10-03', time: '12:00', completed: false },
-  { id: 4, name: '할일 4', date: '2023-10-04', time: '13:00', completed: false },
-  { id: 5, name: '할일 5', date: '2023-10-05', time: '14:00', completed: false },
-  { id: 6, name: '완료한 일 1', date: '2023-09-01', time: '10:00', completed: true },
-  { id: 7, name: '완료한 일 2', date: '2023-09-02', time: '11:00', completed: true },
-  { id: 8, name: '완료한 일 3', date: '2023-09-03', time: '12:00', completed: true },
-  { id: 9, name: '완료한 일 4', date: '2023-09-04', time: '13:00', completed: true },
-  { id: 10, name: '완료한 일 5', date: '2023-09-05', time: '14:00', completed: true },
+  { id: 1, name: '회의 준비', date: '2024-12-26', time: '10:00', completed: false },
+  { id: 2, name: '프로젝트 계획 작성', date: '2024-12-27', time: '11:00', completed: false },
+  { id: 3, name: '팀 미팅', date: '2024-12-28', time: '12:00', completed: false },
+  { id: 4, name: '코드 리뷰', date: '2024-12-29', time: '13:00', completed: false },
+  { id: 5, name: '고객 회의', date: '2024-12-30', time: '14:00', completed: false },
+  { id: 6, name: '보고서 작성', date: '2024-12-31', time: '10:00', completed: true },
+  { id: 7, name: '코드 디버깅', date: '2025-01-01', time: '11:00', completed: true },
+  { id: 8, name: '문서 검토', date: '2025-01-02', time: '12:00', completed: true },
+  { id: 9, name: '팀 회의', date: '2025-01-03', time: '13:00', completed: true },
+  { id: 10, name: '고객 피드백', date: '2025-01-04', time: '14:00', completed: true },
 ]);
 const newTask = ref('');
 const newTaskDate = ref('');
