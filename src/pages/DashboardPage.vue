@@ -22,11 +22,14 @@
         <p class="text-green-500">완독</p>
       </div>
     </div>
+
+    <div ref="chart" class="w-full h-96 mt-8"></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
+import * as echarts from 'echarts';
 
 interface Book {
   id: number;
@@ -190,7 +193,7 @@ const books = ref<Book[]>([
     category: '소설',
     coverUrl: 'https://example.com/cover17.jpg',
     summary: '한국 이민자 가족의 이야기.',
-    status: false,
+    status: true,
   },
   {
     id: 18,
@@ -223,4 +226,44 @@ const books = ref<Book[]>([
 
 const booksToRead = computed(() => books.value.filter((book) => !book.status));
 const booksRead = computed(() => books.value.filter((book) => book.status));
+
+const chart = ref(null);
+
+onMounted(() => {
+  if (chart.value) {
+    const myChart = echarts.init(chart.value);
+    const option = {
+      title: {
+        text: '읽은 책과 읽을 책 비교',
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow',
+        },
+        formatter: function (params: any) {
+          return `${params[0].name}: ${params[0].value} 책`;
+        },
+      },
+      xAxis: {
+        data: ['읽을 책', '읽은 책'],
+      },
+      yAxis: {},
+      series: [
+        {
+          name: '책 수',
+          type: 'bar',
+          data: [booksToRead.value.length, booksRead.value.length],
+          itemStyle: {
+            color: function (params: { dataIndex: number }) {
+              const colorList = ['#d3d3d3', '#32cd32'];
+              return colorList[params.dataIndex];
+            },
+          },
+        },
+      ],
+    };
+    myChart.setOption(option);
+  }
+});
 </script>
