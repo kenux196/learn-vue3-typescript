@@ -93,16 +93,16 @@ interface Task {
 }
 
 const tasks = ref<Task[]>([
-  { id: 1, name: '회의 준비', date: '2024-12-26', time: '10:00', completed: false },
-  { id: 2, name: '프로젝트 계획 작성', date: '2024-12-27', time: '11:00', completed: false },
-  { id: 3, name: '팀 미팅', date: '2024-12-28', time: '12:00', completed: false },
-  { id: 4, name: '코드 리뷰', date: '2024-12-29', time: '13:00', completed: false },
-  { id: 5, name: '고객 회의', date: '2024-12-30', time: '14:00', completed: false },
-  { id: 6, name: '보고서 작성', date: '2024-12-31', time: '10:00', completed: true },
-  { id: 7, name: '코드 디버깅', date: '2025-01-01', time: '11:00', completed: true },
-  { id: 8, name: '문서 검토', date: '2025-01-02', time: '12:00', completed: true },
-  { id: 9, name: '팀 회의', date: '2025-01-03', time: '13:00', completed: true },
-  { id: 10, name: '고객 피드백', date: '2025-01-04', time: '14:00', completed: true },
+  { id: 1, name: '회의 준비', date: '2024-12-26', time: '10:00', completed: true },
+  { id: 2, name: '프로젝트 계획 작성', date: '2024-12-27', time: '11:00', completed: true },
+  { id: 3, name: '팀 미팅', date: '2024-12-28', time: '12:00', completed: true },
+  { id: 4, name: '코드 리뷰', date: '2024-12-29', time: '13:00', completed: true },
+  { id: 5, name: '고객 회의', date: '2024-12-30', time: '14:00', completed: true },
+  { id: 6, name: '보고서 작성', date: '2024-12-31', time: '10:00', completed: false },
+  { id: 7, name: '코드 디버깅', date: '2025-01-01', time: '11:00', completed: false },
+  { id: 8, name: '문서 검토', date: '2025-01-02', time: '12:00', completed: false },
+  { id: 9, name: '팀 회의', date: '2025-01-03', time: '13:00', completed: false },
+  { id: 10, name: '고객 피드백', date: '2025-01-04', time: '14:00', completed: false },
 ]);
 const newTask = ref('');
 const newTaskDate = ref('');
