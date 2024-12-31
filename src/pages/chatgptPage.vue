@@ -23,16 +23,28 @@
                 :checked="task.completed"
                 class="mr-5 transform scale-150"
               />
-              <span :class="{ 'line-through': task.completed }">
-                {{ task.name }} ({{ task.date }} {{ task.time || '' }})
+              <span
+                :class="{
+                  'line-through': task.completed,
+                  'text-red-500': new Date(task.date + 'T' + task.time) < new Date(),
+                }"
+              >
+                {{ task.name }}
               </span>
             </div>
-            <button
-              @click="deleteTask(task.id)"
-              class="bg-blue-500 text-white p-1 ml-2 w-24 rounded"
-            >
-              삭제
-            </button>
+            <div class="flex items-center">
+              <span
+                :class="{ 'text-red-500': new Date(task.date + 'T' + task.time) < new Date() }"
+                class="mr-2"
+                >{{ task.date }} {{ task.time || '' }}</span
+              >
+              <button
+                @click="deleteTask(task.id)"
+                class="bg-blue-500 text-white p-1 ml-2 w-24 rounded"
+              >
+                삭제
+              </button>
+            </div>
           </li>
         </ul>
       </div>
@@ -51,14 +63,23 @@
                 :checked="task.completed"
                 class="mr-5 transform scale-150"
               />
-              <span> {{ task.name }} ({{ task.date }} {{ task.time || '' }}) </span>
+              <span :class="{ 'text-red-500': new Date(task.date + 'T' + task.time) < new Date() }">
+                {{ task.name }}
+              </span>
             </div>
-            <button
-              @click="deleteTask(task.id)"
-              class="bg-blue-500 text-white p-1 ml-2 w-24 rounded"
-            >
-              삭제
-            </button>
+            <div class="flex items-center">
+              <span
+                :class="{ 'text-red-500': new Date(task.date + 'T' + task.time) < new Date() }"
+                class="mr-2"
+                >{{ task.date }} {{ task.time || '' }}</span
+              >
+              <button
+                @click="deleteTask(task.id)"
+                class="bg-blue-500 text-white p-1 ml-2 w-24 rounded"
+              >
+                삭제
+              </button>
+            </div>
           </li>
         </ul>
       </div>
