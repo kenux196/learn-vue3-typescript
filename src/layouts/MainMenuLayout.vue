@@ -69,7 +69,7 @@ const mainMenuList = [
     path: '/css',
   },
   {
-    title: 'Cowork chatGPT',
+    title: 'Cowork AI',
     icon: 'chat',
     path: '/chatgpt',
   },
