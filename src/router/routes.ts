@@ -1,6 +1,5 @@
 import chartjsRoutes from './chart-routes';
 import nestedRoutes from './nested-routes';
-import quasrRoutes from './quasar-routes';
 import quillRoutes from './quill-routes';
 import vueRoutes from './vue-routes';
 
@@ -20,10 +19,17 @@ const routes = [
     component: () => import('@/pages/GugudanPage.vue'),
   },
   nestedRoutes,
-  quasrRoutes,
   chartjsRoutes,
   vueRoutes,
   quillRoutes,
+  {
+    path: '/css',
+    component: () => import('@/pages/TailwindcssPlayground.vue'),
+  },
+  {
+    path: '/chatgpt',
+    component: () => import('@/pages/chatgptPage.vue'),
+  },
   // Always leave this as last one,
   // but you can also remove it
   {

@@ -1,8 +1,5 @@
 <template>
   <div class="text-h3 text-center">Posts Page</div>
-  <div class="q-ma-md">
-    <q-table title="Quasar QTable" :rows="rows" :columns="columns" row-key="id" separator="cell" />
-  </div>
   <div class="q-ma-md q-pa-md bg-grey-10 row justify-center">
     <table style="width: 100%">
       <caption class="text-h5 q-mb-md" style="text-align: start">

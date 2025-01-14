@@ -4,7 +4,7 @@ const chartRoutes = {
   children: [
     {
       path: 'echart',
-      component: () => import('@/pages/chart-sample/EchartPage1.vue'),
+      component: () => import('@/pages/chart-sample/EchartPieSample.vue'),
     },
   ],
 };

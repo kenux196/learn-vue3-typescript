@@ -1,7 +1,9 @@
 <template>
-  <h3>Quill: Rich Text Editor</h3>
-  <div style="width: 800px; height: 300px">
-    <div id="editor" ref="quillEditorRef" />
+  <h3 class="my-3">Quill: Rich Text Editor</h3>
+  <div>
+    <div id="editor" ref="quillEditorRef" style="width: 100%; height: 300px" />
+  </div>
+  <div class="my-5">
     <p>quillContents(Delta): {{ quillContents }}</p>
     <p>quillLenght: {{ quillLength }}</p>
     <p>quillText: {{ quillText }}</p>

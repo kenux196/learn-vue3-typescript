@@ -7,14 +7,12 @@ import { PieChart } from 'echarts/charts';
 import { LegendComponent, TitleComponent, TooltipComponent } from 'echarts/components';
 import { use } from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
-import { useQuasar } from 'quasar';
 import { provide, ref } from 'vue';
 import VChart, { THEME_KEY } from 'vue-echarts';
 
 use([CanvasRenderer, PieChart, TitleComponent, TooltipComponent, LegendComponent]);
 
-const $q = useQuasar();
-provide(THEME_KEY, $q.dark.isActive ? 'dark' : 'light');
+provide(THEME_KEY, 'light');
 
 const option = ref({
   title: {
