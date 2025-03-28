@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import Quill from 'quill';
 import type { Delta } from 'quill/core';
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 
 const quillEditorRef = ref(null);
 const quillContents = ref<Delta>();
@@ -45,6 +45,37 @@ const toolbarOptions = [
   ['clean'], // remove formatting button
 ];
 
+// Define event handlers as named functions to be able to properly remove them
+const handleTextChange = function (delta: any, oldData: any, source: any) {
+  console.log(`'text-change' call by ${source}, delta: ${delta}, oldData: ${oldData}`);
+  quillContents.value = quill.getContents();
+  quillLength.value = quill.getLength();
+  quillText.value = quill.getText();
+  html.value = quill.getSemanticHTML();
+};
+
+const handleSelectionChange = function (range: any, oldRange: any, source: any) {
+  console.log('selection-change');
+  if (range) {
+    if (range.length == 0) {
+      console.log('User cursor is on', range.index);
+    } else {
+      const text = quill.getText(range.index, range.length);
+      console.log('User has highlighted', text);
+    }
+  } else {
+    console.log('Cursor not in the editor');
+  }
+};
+
+const handleEditorChange = function (eventName: string, ...args: any[]) {
+  console.log(`editor-change: ${eventName}, args: ${args}`);
+};
+
+const handleFirstTextChange = function () {
+  console.log('The first text change!');
+};
+
 onMounted(() => {
   quill = new Quill('#editor', {
     debug: 'info',
@@ -55,37 +86,18 @@ onMounted(() => {
     theme: 'snow',
   });
 
-  quill.on('text-change', (delta, oldData, source) => {
-    console.log(`'text-change' call by ${source}, delta: ${delta}, oldData: ${oldData}`);
-    quillContents.value = quill.getContents();
-    quillLength.value = quill.getLength();
-    quillText.value = quill.getText();
-    html.value = quill.getSemanticHTML();
-  });
+  quill.on('text-change', handleTextChange);
+  quill.on('selection-change', handleSelectionChange);
+  quill.on('editor-change', handleEditorChange);
+  quill.once('text-change', handleFirstTextChange);
+});
 
-  quill.on('selection-change', (range, oldRange, source) => {
-    console.log('selection-change');
-    if (range) {
-      if (range.length == 0) {
-        console.log('User cursor is on', range.index);
-      } else {
-        const text = quill.getText(range.index, range.length);
-        console.log('User has highlighted', text);
-      }
-    } else {
-      console.log('Cursor not in the editor');
-    }
-  });
-  quill.on('editor-change', (eventName, ...args) => {
-    console.log(`editor-change: ${eventName}, args: ${args}`);
-  });
-
-  quill.once('text-change', () => {
-    console.log('The first text change!');
-  });
-
-  quill.off('text-change', () => {
-    console.log('remove "text-change" event!');
-  });
+onUnmounted(() => {
+  if (quill) {
+    // Properly remove all event listeners when component unmounts
+    quill.off('text-change', handleTextChange);
+    quill.off('selection-change', handleSelectionChange);
+    quill.off('editor-change', handleEditorChange);
+  }
 });
 </script>
