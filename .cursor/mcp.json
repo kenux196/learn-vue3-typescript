@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/sky/Desktop",
+        "/Users/sky/Downloads",
+        "/Users/sky/obsidian-vault"
+      ]
+    }
+  }
+}
